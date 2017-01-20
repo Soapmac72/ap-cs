@@ -1,0 +1,35 @@
+import java.util.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.lang.*;
+class WildCard {
+  int wildCount = 0;
+  public static void main(String[] args) {
+    Scanner scan = new Scanner(System.in);
+    String toReplace = "%";
+    System.out.println("Input a string: ");
+    String input = scan.nextLine();
+    System.out.println(input);
+    boolean validInput = true;
+    
+    char[] inputCharacters = input.toCharArray();
+
+    for (int i = 0; i < inputCharacters.length; i++) {
+      if (Character.isLetter(inputCharacters[i]) == false && Character.isWhitespace(inputCharacters[i]) == false) {
+        validInput = false;
+      }
+    }
+
+    if (validInput == true) {
+      if (input.contains(toReplace) == false) {
+        System.out.println("Error: no %");
+          } else {
+            System.out.println("Enter the replacement String:");
+            String replacement = scan.nextLine();
+            System.out.println(replacement);
+            String replaced = input.replaceFirst(toReplace, replacement);
+            System.out.println(replaced);
+          }
+  }
+ }
+}
