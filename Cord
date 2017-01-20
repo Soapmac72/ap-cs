@@ -1,0 +1,58 @@
+import java.util.*;
+class Cord {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int check = 0;
+        boolean error = false;
+
+        System.out.println("Please enter the latitude: ");
+        double currentLatitude = scan.nextDouble();
+        double lowestLatitude = currentLatitude;
+        double greatestLatitude = currentLatitude;
+        System.out.println("Please enter the longitude: ");
+        double currentLongitude = scan.nextDouble();
+        double lowestLongitude = currentLongitude;
+        double greatestLongitude = currentLongitude
+        System.out.println("Would you like to enter another location?");
+        check = scan.nextInt();
+        
+        while (check == 1) {
+            System.out.println("Please enter the latitude: ");
+            currentLatitude = scan.nextDouble();
+            if (currentLatitude >= -90 && currentLatitude <= 90) {
+                if (currentLatitude < lowestLatitude) {
+                    lowestLatitude = currentLatitude;
+                }
+                if (currentLatitude > greatestLatitude) {
+                    greatestLatitude = currentLatitude
+                }
+            }else {
+                error = true;
+            }
+            System.out.println("Please enter the longitude: ");
+            currentLongitude = scan.nextDouble();
+            if (currentLongitude >= -180 && currentLongitude <= 180) {
+                if (currentLongitude < lowestLongitude) {
+                    lowestLongitude = currentLongitude;
+                }
+                if (currentLongitude > greatestLongitude) {
+                    greatestLongitude = currentLongitude;
+                }
+            }else {
+                error = true;
+            }
+            if (error == true) {
+                System.out.println("Incorrect Latitude or Longitude");
+            }
+            System.out.println("Would you like to enter another location?");
+            check = scan.nextInt();
+        }
+
+        if (check == 0) {
+            System.out.println("Farthest North: " + greatestLatitude);
+            System.out.println("Farthest South: " + lowestLatitude);
+            System.out.println("Farthest West: " + lowestLongitude);
+            System.out.println("Farthest East: " + greatestLongitude);
+        }
+    }
+}
